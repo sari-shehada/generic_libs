@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:generic_libs/pages/Theming/theming_page.dart';
 import 'package:generic_libs/services/ui_services/buttons.dart';
+import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -19,7 +21,8 @@ class HomePage extends StatelessWidget {
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(),
           children: [
-            NavigationButton(label: 'Test', onTap: () {}),
+            NavigationButton(
+                label: 'Theming', onTap: () => Get.to(() => ThemingPage())),
             NavigationButton(label: 'Test', onTap: () {}),
             NavigationButton(label: 'Test', onTap: () {}),
           ],
