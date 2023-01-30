@@ -18,8 +18,13 @@ class Wrapper extends StatelessWidget {
             statusBarBrightness: Brightness.dark,
           ),
         ),
-        body: const Center(
-          child: Text("Hello Generic Libraries"),
+        body: SizedBox.expand(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Text("Hello Generic Libraries"),
+            ],
+          ),
         ),
       ),
     );
