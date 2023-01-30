@@ -19,7 +19,7 @@ class Wrapper extends StatelessWidget {
           ),
         ),
         body: const Center(
-          child: Text("Hello Generic Libraris"),
+          child: Text("Hello Generic Libraries"),
         ),
       ),
     );
