@@ -11,6 +11,15 @@ class NavigationButton extends StatelessWidget {
       splashColor: Colors.transparent,
       onTap: onTap,
       child: Container(
+        padding: EdgeInsets.all(10),
+        width: double.infinity,
+        decoration:
+            BoxDecoration(borderRadius: BorderRadius.circular(8), boxShadow: [
+          BoxShadow(
+              color: Colors.black.withOpacity(0.12),
+              offset: Offset(0, 2),
+              blurRadius: 13)
+        ]),
         child: Text(label),
       ),
     );
