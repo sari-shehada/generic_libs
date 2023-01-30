@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:generic_libs/services/ui_services/buttons.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -14,10 +15,13 @@ class HomePage extends StatelessWidget {
         ),
       ),
       body: SizedBox.expand(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text("Hello Generic Libraries"),
+        child: ListView(
+          shrinkWrap: true,
+          physics: const BouncingScrollPhysics(),
+          children: [
+            NavigationButton(label: 'Test', onTap: () {}),
+            NavigationButton(label: 'Test', onTap: () {}),
+            NavigationButton(label: 'Test', onTap: () {}),
           ],
         ),
       ),
