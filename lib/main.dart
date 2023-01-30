@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:generic_libs/pages/home_page.dart';
 
 void main(List<String> args) {
   runApp(const Wrapper());
@@ -10,23 +10,9 @@ class Wrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          systemOverlayStyle: const SystemUiOverlayStyle(
-            statusBarBrightness: Brightness.dark,
-          ),
-        ),
-        body: SizedBox.expand(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text("Hello Generic Libraries"),
-            ],
-          ),
-        ),
-      ),
+      home: HomePage(),
     );
   }
 }
