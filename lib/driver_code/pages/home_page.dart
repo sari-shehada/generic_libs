@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../services/ui_services/buttons.dart';
+import '../../generic_libs/ui_widgets/buttons.dart';
 import 'package:get/get.dart';
 
 import 'Theming/Theming_page.dart';

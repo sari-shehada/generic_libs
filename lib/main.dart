@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:generic_libs/alterable/global_configurative.dart';
+import 'package:generic_libs/generic_libs/dev_tools/dev_tools.dart';
 import 'package:get/get.dart';
 
-import 'pages/home_page.dart';
+import 'development_params/global_configurative.dart';
+import 'driver_code/pages/home_page.dart';
 
 void main(List<String> args) {
+  //TODO: Call This Method In Wrapper Widget on param called "allowDebugging"
+  DevTools.init();
   runApp(const Wrapper());
 }
 

@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:generic_libs/generic_libs/dev_tools/log_tools.dart';
 import 'package:get/get.dart';
 
-import '../../services/ui_services/theming_service/theming_service.dart';
+import '../../../generic_libs/ui_utils/theming_service/theming_service.dart';
 
 class ThemingController extends GetxController {
   Rx<ThemeMode> currentThemeMode = ThemeMode.light.obs;
 
   toggleThemeMode() {
     currentThemeMode.value = ThemingService.toggleTheme();
+    logSuccess("Changed Theme Mode to ${currentThemeMode.value}");
   }
 
   setThemeMode(ThemeMode themeMode) {
     currentThemeMode.value = ThemingService.setThemeMode(themeMode: themeMode);
     switch (themeMode) {
       case ThemeMode.system:
-        print("Changed Theme Mode to System");
+        logSuccess("Changed Theme Mode to System");
         break;
       case ThemeMode.light:
-        print("Changed Theme Mode to Light");
+        logSuccess("Changed Theme Mode to Light");
         break;
       case ThemeMode.dark:
-        print("Changed Theme Mode to Dark");
+        logSuccess("Changed Theme Mode to Dark");
         break;
     }
   }

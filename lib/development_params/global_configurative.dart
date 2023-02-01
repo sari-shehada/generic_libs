@@ -1,9 +1,12 @@
 library global_configurative;
 
 import 'package:flutter/material.dart';
+
 part 'theme_configurative.dart';
 
 abstract class GlobalConfigurative {
+  static init() {}
+
   static const double defaultScreenWidth = 540;
   static const double defaultScreenHeight = 960;
 

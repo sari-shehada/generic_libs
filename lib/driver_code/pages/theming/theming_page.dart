@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:generic_libs/services/ui_services/shared/shared.dart';
-import '../../services/ui_services/buttons.dart';
+
+import '../../../generic_libs/ui_utils/shared_utils/custom_sizedbox.dart';
+import '../../../generic_libs/ui_widgets/buttons.dart';
 import 'theming_controller.dart';
 
 class ThemingPage extends StatelessWidget {

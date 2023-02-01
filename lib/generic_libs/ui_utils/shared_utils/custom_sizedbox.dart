@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:generic_libs/services/extensions_services/extensions_export.dart';
+import '../../logic_services/extensions_services/extensions_export.dart';
 
 class AddVerticalSpacing extends StatelessWidget {
   const AddVerticalSpacing({super.key, required this.value});
