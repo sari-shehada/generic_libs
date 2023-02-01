@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:generic_libs/pages/Theming/themes.dart';
 import 'package:get/get.dart';
 
 import 'pages/home_page.dart';
@@ -12,9 +13,12 @@ class Wrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      themeMode: ThemeMode.light,
+      darkTheme: darkTheme,
+      theme: lightTheme,
+      home: const HomePage(),
     );
   }
 }

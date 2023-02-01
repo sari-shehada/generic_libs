@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:generic_libs/pages/Theming/theming_page.dart';
-import 'package:generic_libs/services/ui_services/buttons.dart';
+import 'Theming/theming_page.dart';
+import '../services/ui_services/buttons.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
