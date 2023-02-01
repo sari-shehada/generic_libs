@@ -5,9 +5,11 @@ class NavigationButton extends StatelessWidget {
       {super.key,
       required this.label,
       required this.onTap,
-      this.description = ""});
+      this.description = "",
+      required this.icon});
 
   final String label;
+  final IconData icon;
   final String description;
   final VoidCallback onTap;
   @override
@@ -39,7 +41,7 @@ class NavigationButton extends StatelessWidget {
             child: Center(
                 child: ListTile(
               leading: Icon(
-                Icons.color_lens,
+                icon,
                 size: 40,
                 color: themeData.primaryColor,
               ),

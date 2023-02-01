@@ -4,6 +4,7 @@ import '../../generic_libs/ui_widgets/buttons.dart';
 import 'package:get/get.dart';
 
 import 'Theming/Theming_page.dart';
+import 'localization/localization_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -28,7 +29,14 @@ class HomePage extends StatelessWidget {
               label: 'Theming',
               description:
                   "Manage application's theme modes and toggle between Light, Dark and System",
+              icon: Icons.color_lens,
               onTap: () => Get.to(() => ThemingPage()),
+            ),
+            NavigationButton(
+              label: 'Localization',
+              description: "Manage application's languages and LTR,RTL Support",
+              icon: Icons.language,
+              onTap: () => Get.to(() => const LocalizationPage()),
             ),
           ],
         ),
