@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'Theming/theming_page.dart';
 import '../services/ui_services/buttons.dart';
 import 'package:get/get.dart';
+
+import 'Theming/Theming_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -19,13 +20,16 @@ class HomePage extends StatelessWidget {
       ),
       body: SizedBox.expand(
         child: ListView(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(),
           children: [
             NavigationButton(
-                label: 'Theming', onTap: () => Get.to(() => ThemingPage())),
-            NavigationButton(label: 'Test', onTap: () {}),
-            NavigationButton(label: 'Test', onTap: () {}),
+              label: 'Theming',
+              description:
+                  "Manage Application's Theme Modes And Toggle Between Light, Dark and System",
+              onTap: () => Get.to(() => ThemingPage()),
+            ),
           ],
         ),
       ),

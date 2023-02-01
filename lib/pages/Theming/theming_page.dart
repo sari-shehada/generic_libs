@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:generic_libs/services/ui_services/shared/shared.dart';
-import 'package:generic_libs/services/ui_services/theming_service/theming_service.dart';
+import '../../services/ui_services/buttons.dart';
 import 'theming_controller.dart';
 
 class ThemingPage extends StatelessWidget {
@@ -9,9 +9,7 @@ class ThemingPage extends StatelessWidget {
   final ThemingController _controller = ThemingController();
   @override
   Widget build(BuildContext context) {
-    ThemeData _themeData = Theme.of(context);
-    //TODO: Remove this line later if you don't end up using it
-    //double upperPadding = MediaQuery.of(context).padding.top;
+    ThemeData themeData = Theme.of(context);
     return Scaffold(
         appBar: AppBar(title: const Text("Theming")),
         body: Padding(
@@ -23,37 +21,100 @@ class ThemingPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text("Current Theme Mode",
-                      style: _themeData.textTheme.titleLarge),
-                  Text(_controller.currentThemeMode.value,
-                      style: _themeData.textTheme.titleLarge!
+                      style: themeData.textTheme.titleLarge),
+                  Text(
+                      _controller.currentThemeMode.value == ThemeMode.light
+                          ? "Light"
+                          : _controller.currentThemeMode.value ==
+                                  ThemeMode.system
+                              ? "System"
+                              : "Dark",
+                      style: themeData.textTheme.titleLarge!
                           .copyWith(color: Colors.red)),
                 ],
               ),
               const AddVerticalSpacing(value: 20),
-              Text(
-                "\"Toggle Theme\" Feature Test",
-                style: _themeData.textTheme.titleMedium,
-              ),
+              TestSegment(
+                  containerBackColor: themeData.scaffoldBackgroundColor,
+                  children: [
+                    Text(
+                      "\"Toggle Theme\" Feature Test",
+                      style: themeData.textTheme.titleMedium,
+                    ),
+                    const AddVerticalSpacing(value: 15),
+                    BasicButton.fromThemeData(
+                      label: "Toggle Theme Mode",
+                      onTap: () => _controller.toggleThemeMode(),
+                      themeData: themeData,
+                    ),
+                  ]),
+              const AddVerticalSpacing(value: 20),
+              TestSegment(
+                  containerBackColor: themeData.scaffoldBackgroundColor,
+                  children: [
+                    Text(
+                      "\"Change Theme Mode\" Feature Test",
+                      style: themeData.textTheme.titleMedium,
+                    ),
+                    const AddVerticalSpacing(value: 15),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Choose Theme Mode",
+                          style: themeData.textTheme.labelLarge,
+                        ),
+                        DropdownButton(
+                            items: const [
+                              DropdownMenuItem(
+                                value: ThemeMode.light,
+                                child: Text("Light"),
+                              ),
+                              DropdownMenuItem(
+                                value: ThemeMode.dark,
+                                child: Text("Dark"),
+                              ),
+                              DropdownMenuItem(
+                                value: ThemeMode.system,
+                                child: Text("System"),
+                              )
+                            ],
+                            onChanged: (themeMode) {
+                              _controller.setThemeMode(themeMode!);
+                            }),
+                      ],
+                    )
+                  ]),
               const AddVerticalSpacing(value: 10),
-              InkWell(
-                onTap: () => _controller.toggleThemeMode(),
-                child: Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  decoration: BoxDecoration(
-                      color: _themeData.primaryColor,
-                      borderRadius: BorderRadius.circular(8),
-                      boxShadow: [
-                        BoxShadow(
-                            offset: Offset(0, 2),
-                            color: Colors.black.withOpacity(0.08),
-                            blurRadius: 12)
-                      ]),
-                  child: const Center(child: Text("Toggle Theme Mode")),
-                ),
-              )
             ],
           ),
         ));
+  }
+}
+
+class TestSegment extends StatelessWidget {
+  const TestSegment(
+      {super.key, required this.children, required this.containerBackColor});
+
+  final Color containerBackColor;
+  final List<Widget> children;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      decoration: BoxDecoration(
+          color: containerBackColor,
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.black.withOpacity(0.12),
+                blurRadius: 13,
+                offset: const Offset(0, 4))
+          ]),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: children,
+      ),
+    );
   }
 }
