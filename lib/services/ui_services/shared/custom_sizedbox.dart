@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:generic_libs/services/extensions_services/extensions_export.dart';
 
 class AddVerticalSpacing extends StatelessWidget {
   const AddVerticalSpacing({super.key, required this.value});
@@ -7,7 +8,7 @@ class AddVerticalSpacing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: value,
+      height: value.responsiveFromHeight,
     );
   }
 }
@@ -19,7 +20,7 @@ class AddHorizontalSpacing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: value,
+      width: value.responsiveFromWidth,
     );
   }
 }
