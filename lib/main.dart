@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:generic_libs/pages/theming/themes.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:generic_libs/alterable/global_configurative.dart';
 import 'package:get/get.dart';
 
 import 'pages/home_page.dart';
@@ -13,12 +14,20 @@ class Wrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.light,
-      darkTheme: darkTheme,
-      theme: lightTheme,
-      home: const HomePage(),
+    return ScreenUtilInit(
+      designSize: const Size(
+        GlobalConfigurative.defaultScreenWidth,
+        GlobalConfigurative.defaultScreenHeight,
+      ),
+      builder: (context, child) {
+        return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          themeMode: ThemeMode.light,
+          darkTheme: GlobalConfigurative.darkTheme,
+          theme: GlobalConfigurative.lightTheme,
+          home: const HomePage(),
+        );
+      },
     );
   }
 }
