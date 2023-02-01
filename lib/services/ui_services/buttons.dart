@@ -67,10 +67,11 @@ class NavigationButton extends StatelessWidget {
   }
 }
 
-class BasicButton extends StatelessWidget {
+class BasicButton<T> extends StatelessWidget {
+  static const String _widgetLoggerAlias = "Basic Button => ";
   const BasicButton({
     super.key,
-    required this.label,
+    required this.child,
     required this.onTap,
     required this.buttonBackColor,
     this.highLightColor,
@@ -78,13 +79,13 @@ class BasicButton extends StatelessWidget {
   });
 
   factory BasicButton.fromThemeData(
-      {required String label,
+      {required T child,
       required VoidCallback onTap,
       required ThemeData themeData,
       Color? highLightColor,
       double borderRadiusValue = 8}) {
-    return BasicButton(
-      label: label,
+    return BasicButton<T>(
+      child: child,
       onTap: onTap,
       buttonBackColor: themeData.primaryColor,
       borderRadiusValue: borderRadiusValue,
@@ -92,7 +93,7 @@ class BasicButton extends StatelessWidget {
     );
   }
 
-  final String label;
+  final T child;
   final VoidCallback onTap;
   final Color buttonBackColor;
   final Color? highLightColor;
@@ -119,10 +120,22 @@ class BasicButton extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(borderRadiusValue),
             ),
-            child: Center(child: Text(label)),
+            child: _buildAppropriateChild(),
           ),
         ),
       ),
     );
+  }
+
+  Widget _buildAppropriateChild() {
+    assert(child is Widget || child is String,
+        "$_widgetLoggerAlias: Expected a Widget or String but got ${child.runtimeType}");
+    if (child is Widget) {
+      return (child as Widget);
+    }
+    if (child is String) {
+      return Center(child: Text(child as String));
+    }
+    return const Center(child: Text("Something Occurred"));
   }
 }

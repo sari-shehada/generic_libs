@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
             NavigationButton(
               label: 'Theming',
               description:
-                  "Manage Application's Theme Modes And Toggle Between Light, Dark and System",
+                  "Manage application's theme modes and toggle between Light, Dark and System",
               onTap: () => Get.to(() => ThemingPage()),
             ),
           ],

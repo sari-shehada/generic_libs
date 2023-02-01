@@ -33,29 +33,23 @@ class ThemingPage extends StatelessWidget {
                           .copyWith(color: Colors.red)),
                 ],
               ),
-              const AddVerticalSpacing(value: 20),
+              const AddVerticalSpacing(value: 10),
               TestSegment(
+                  testTitle: "\"Toggle Theme\" Feature Test",
                   containerBackColor: themeData.scaffoldBackgroundColor,
                   children: [
-                    Text(
-                      "\"Toggle Theme\" Feature Test",
-                      style: themeData.textTheme.titleMedium,
-                    ),
                     const AddVerticalSpacing(value: 15),
                     BasicButton.fromThemeData(
-                      label: "Toggle Theme Mode",
+                      child: "Toggle Theme Mode",
                       onTap: () => _controller.toggleThemeMode(),
                       themeData: themeData,
                     ),
                   ]),
               const AddVerticalSpacing(value: 20),
               TestSegment(
+                  testTitle: "\"Change Theme Mode\" Feature Test",
                   containerBackColor: themeData.scaffoldBackgroundColor,
                   children: [
-                    Text(
-                      "\"Change Theme Mode\" Feature Test",
-                      style: themeData.textTheme.titleMedium,
-                    ),
                     const AddVerticalSpacing(value: 15),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -94,12 +88,17 @@ class ThemingPage extends StatelessWidget {
 
 class TestSegment extends StatelessWidget {
   const TestSegment(
-      {super.key, required this.children, required this.containerBackColor});
+      {super.key,
+      required this.children,
+      required this.containerBackColor,
+      required this.testTitle});
 
   final Color containerBackColor;
+  final String testTitle;
   final List<Widget> children;
   @override
   Widget build(BuildContext context) {
+    ThemeData themeData = Theme.of(context);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       decoration: BoxDecoration(
@@ -113,7 +112,13 @@ class TestSegment extends StatelessWidget {
           ]),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: children,
+        children: [
+          Text(
+            testTitle,
+            style: themeData.textTheme.titleMedium,
+          ),
+          ...children,
+        ],
       ),
     );
   }
